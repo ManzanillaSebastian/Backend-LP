@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from rest_framework import generics
+from .models import Evento
+from .serializers import EventoSerializer
 
-# Create your views here.
-from django.http import HttpResponse
-
-def index(request):
-    return HttpResponse("¡Bienvenido a la aplicación Django!")
+class EventoListCreateView(generics.ListCreateAPIView):
+    queryset = Evento.objects.all()
+    serializer_class = EventoSerializer
